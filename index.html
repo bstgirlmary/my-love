@@ -1,0 +1,166 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For You</title>
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 50%, #fbc2eb 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      position: relative;
+      overflow: hidden;
+    }
+    /* floating hearts */
+    body::before {
+      content: "💗 💕 💖 💞 💓 💗 💕";
+      position: absolute;
+      top: -10%;
+      left: -10%;
+      width: 120%;
+      height: 120%;
+      font-size: 28px;
+      opacity: 0.18;
+      letter-spacing: 40px;
+      animation: floatHearts 18s linear infinite;
+      pointer-events: none;
+      text-align: center;
+      line-height: 120px;
+    }
+    @keyframes floatHearts {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(20%); }
+    }
+    /* WLW soft accent ribbon */
+    .ribbon {
+      position: absolute;
+      top: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(255,255,255,0.7);
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      color: #7a3db8;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+    }
+    .card {
+      background: #ffffff;
+      width: 100%;
+      max-width: 380px;
+      padding: 24px;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 16px;
+    }
+    label {
+      font-size: 14px;
+      display: block;
+      margin-top: 12px;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 6px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+    }
+    button {
+      width: 100%;
+      margin-top: 18px;
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      background: #6c63ff;
+      color: #fff;
+      font-size: 15px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #5a52e0;
+    }
+    .error {
+      color: #d93025;
+      font-size: 13px;
+      margin-top: 10px;
+      text-align: center;
+    }
+    .message {
+      text-align: center;
+      font-size: 16px;
+      line-height: 1.7;
+      color: #5a2a6e;
+    }/* romantic message card styling */
+#messageCard {
+  background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(255,230,245,0.95));
+  border: 2px solid rgba(255,182,193,0.6);
+  position: relative;
+  overflow: hidden;
+}
+
+#messageCard::before {
+  content: "💖 💕 💗 💞";
+  position: absolute;
+  inset: 0;
+  opacity: 0.15;
+  font-size: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+#messageCard p strong {
+  font-size: 18px;
+  color: #7a3db8;
+}
+
+  </style>
+</head>
+<body>
+  <div class="ribbon">for us 🤍</div>
+  <div class="card" id="loginCard">
+    <h2>Login</h2>
+    <label>Your callsign</label>
+    <input type="text" id="callsign" placeholder="Enter callsign" /><label>Your monthsary</label>
+<input type="password" id="monthsary" placeholder="Enter monthsary" />
+
+<button onclick="checkLogin()">Open Message</button>
+<div class="error" id="error"></div>
+
+  </div>  <div class="card" id="messageCard" style="display:none;">
+    <div class="message">
+      <p><strong>Love,</strong></p>
+      <p>
+        sorry na, wala lang kasi talaga ako sa mood kanina. 
+        Ayoko na ganito tayo, mahal na mahal kita😘 bati na tayo, okayy?🥺 iloveyouusomuchhh, ikikiss pa kita ng madami mamayaa😗
+      </p>
+    </div>
+  </div>  <script>
+    function checkLogin() {
+      const callsignInput = document.getElementById('callsign');
+      const monthsaryInput = document.getElementById('monthsary');
+      const error = document.getElementById('error');
+
+      const callsign = callsignInput.value.trim().toLowerCase();
+      const monthsary = monthsaryInput.value.trim();
+
+      error.textContent = "";
+
+      if (callsign === 'love' && monthsary === '29') {
+        document.getElementById('loginCard').style.display = 'none';
+        document.getElementById('messageCard').style.display = 'block';
+      } else {
+        error.textContent = 'Incorrect details. Try again.';
+      }
+    }
+  </script></body>
+</html>
